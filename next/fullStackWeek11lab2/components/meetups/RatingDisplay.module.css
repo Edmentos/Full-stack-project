@@ -1,0 +1,151 @@
+.ratingSection {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ratingSection h2 {
+    margin: 0 0 1.5rem 0;
+    color: #333;
+}
+
+.ratingDisplay {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+@media (max-width: 768px) {
+    .ratingDisplay {
+        grid-template-columns: 1fr;
+    }
+}
+
+.averageRating {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ratingNumber {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #77002e;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.ratingCount {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: 0.5rem;
+}
+
+.stars {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.star {
+    font-size: 2rem;
+    color: #ddd;
+    transition: color 0.2s;
+}
+
+.star.filled {
+    color: #ffc107;
+}
+
+.star.interactive {
+    cursor: pointer;
+    user-select: none;
+}
+
+.star.interactive:hover {
+    transform: scale(1.1);
+}
+
+.ratingBreakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.ratingRow {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.starLabel {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: right;
+}
+
+.progressBar {
+    height: 10px;
+    background: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #77002e, #ffc107);
+    transition: width 0.3s ease;
+}
+
+.countLabel {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+}
+
+.rateThisMeetup {
+    text-align: center;
+}
+
+.rateThisMeetup h3 {
+    margin: 0 0 1rem 0;
+    color: #555;
+    font-size: 1.2rem;
+}
+
+.rateThisMeetup .stars {
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.rateThisMeetup .star {
+    font-size: 2.5rem;
+}
+
+.hint {
+    font-size: 0.85rem;
+    color: #999;
+    margin: 0.5rem 0 0 0;
+}
+
+.submitting {
+    color: #77002e;
+    font-weight: 500;
+}
+
+.thankYou {
+    color: #28a745;
+}
+
+.thankYou p {
+    margin: 0 0 1rem 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+}

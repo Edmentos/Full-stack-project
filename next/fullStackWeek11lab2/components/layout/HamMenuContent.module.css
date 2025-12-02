@@ -1,0 +1,78 @@
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(4px);
+}
+
+.mainContent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 75%;
+    max-width: 320px;
+    height: 100%;
+    background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  .mainContent::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+  }
+
+.menuItem {
+    color: white;
+    padding: 18px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.menuItem::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(180deg, #77002e, #a8003e);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.menuItem:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 28px;
+}
+
+.menuItem:hover::before {
+    transform: scaleY(1);
+}
+
+.menuItem:active {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+

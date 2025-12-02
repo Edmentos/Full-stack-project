@@ -1,0 +1,185 @@
+.rsvpSection {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.header h2 {
+    margin: 0;
+    color: #333;
+}
+
+.rsvpButton {
+    padding: 0.75rem 1.5rem;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.rsvpButton:hover {
+    background: #218838;
+}
+
+.cancelButton {
+    padding: 0.75rem 1.5rem;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.cancelButton:hover:not(:disabled) {
+    background: #c82333;
+}
+
+.cancelButton:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.rsvpForm {
+    background: #f0f8f5;
+    padding: 1.5rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    border: 2px solid #28a745;
+}
+
+.formDescription {
+    margin: 0 0 1rem 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.rsvpForm input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.rsvpForm input:focus {
+    outline: none;
+    border-color: #28a745;
+}
+
+.rsvpForm button {
+    width: 100%;
+    padding: 0.75rem;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.rsvpForm button:hover:not(:disabled) {
+    background: #218838;
+}
+
+.rsvpForm button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.rsvpConfirmation {
+    background: #d4edda;
+    border: 2px solid #28a745;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.rsvpConfirmation p {
+    margin: 0;
+    color: #155724;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.attendeesList h3 {
+    margin: 0 0 1rem 0;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.noAttendees {
+    text-align: center;
+    color: #999;
+    padding: 2rem;
+    font-style: italic;
+}
+
+.attendeesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.attendeeCard {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fafafa;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+}
+
+.attendeeAvatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.attendeeInfo {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.attendeeInfo strong {
+    color: #333;
+    font-size: 1rem;
+}
+
+.attendeeEmail {
+    font-size: 0.85rem;
+    color: #888;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

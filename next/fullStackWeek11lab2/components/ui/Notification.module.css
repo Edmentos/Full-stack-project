@@ -1,0 +1,64 @@
+.notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+    max-width: 400px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.notification.success {
+    background-color: #48bb78;
+    color: white;
+}
+
+.notification.error {
+    background-color: #e53e3e;
+    color: white;
+}
+
+.notification.info {
+    background-color: #4299e1;
+    color: white;
+}
+
+.notification span {
+    flex: 1;
+}
+
+.closeButton {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.closeButton:hover {
+    opacity: 1;
+}

@@ -1,0 +1,97 @@
+.shareSection {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.shareSection h2 {
+    margin: 0 0 1.5rem 0;
+    color: #333;
+}
+
+.shareButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.shareButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    transition: all 0.2s;
+}
+
+.shareButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.shareButton:active {
+    transform: translateY(0);
+}
+
+.shareButton svg {
+    width: 20px;
+    height: 20px;
+}
+
+.facebook {
+    background: #1877f2;
+}
+
+.facebook:hover {
+    background: #166fe5;
+}
+
+.twitter {
+    background: #1da1f2;
+}
+
+.twitter:hover {
+    background: #1a91da;
+}
+
+.linkedin {
+    background: #0077b5;
+}
+
+.linkedin:hover {
+    background: #006399;
+}
+
+.email {
+    background: #ea4335;
+}
+
+.email:hover {
+    background: #d33828;
+}
+
+.more {
+    background: #555;
+}
+
+.more:hover {
+    background: #333;
+}
+
+@media (max-width: 768px) {
+    .shareButtons {
+        flex-direction: column;
+    }
+
+    .shareButton {
+        width: 100%;
+        justify-content: center;
+    }
+}

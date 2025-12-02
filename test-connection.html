@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backend Connection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .test-box {
+            border: 2px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .success { border-color: #48bb78; background: #f0fff4; }
+        .error { border-color: #e53e3e; background: #fff5f5; }
+        .pending { border-color: #4299e1; background: #ebf8ff; }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover { background: #5568d3; }
+        pre {
+            background: #2d3748;
+            color: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Backend Connection Test</h1>
+    
+    <div class="test-box pending" id="backendTest">
+        <h2>Step 1: Test Backend Server</h2>
+        <p>Testing connection to: <code>http://localhost:8000</code></p>
+        <button onclick="testBackend()">Test Backend Connection</button>
+        <div id="backendResult"></div>
+    </div>
+
+    <div class="test-box pending" id="mongoTest">
+        <h2>Step 2: Test MongoDB Connection</h2>
+        <p>Testing database operations</p>
+        <button onclick="testMongo()">Test MongoDB</button>
+        <div id="mongoResult"></div>
+    </div>
+
+    <div class="test-box pending" id="apiTest">
+        <h2>Step 3: Test Next.js API Routes</h2>
+        <p>Testing API routes at: <code>http://localhost:3000/api</code></p>
+        <button onclick="testAPI()">Test API Routes</button>
+        <div id="apiResult"></div>
+    </div>
+
+    <script>
+        async function testBackend() {
+            const box = document.getElementById('backendTest');
+            const result = document.getElementById('backendResult');
+            result.innerHTML = '<p>⏳ Testing...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:8000/readMeeting', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ cmd: 'all' })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    box.className = 'test-box success';
+                    result.innerHTML = `
+                        <p>✅ <strong>Backend is running!</strong></p>
+                        <p>Found ${data.meetings ? data.meetings.length : 0} meetups in database</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                box.className = 'test-box error';
+                result.innerHTML = `
+                    <p>❌ <strong>Backend is NOT running!</strong></p>
+                    <p>Error: ${error.message}</p>
+                    <p><strong>Fix:</strong> Open a terminal and run:</p>
+                    <pre>cd node/microservices
+npm start</pre>
+                `;
+            }
+        }
+
+        async function testMongo() {
+            const box = document.getElementById('mongoTest');
+            const result = document.getElementById('mongoResult');
+            result.innerHTML = '<p>⏳ Testing...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:8000/readMeeting', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ cmd: 'all' })
+                });
+                
+                const data = await response.json();
+                
+                if (data.meetings) {
+                    box.className = 'test-box success';
+                    result.innerHTML = `
+                        <p>✅ <strong>MongoDB is connected!</strong></p>
+                        <p>Database: <code>db</code></p>
+                        <p>Collection: <code>meetings</code></p>
+                        <p>Documents: ${data.meetings.length}</p>
+                    `;
+                } else {
+                    throw new Error('No meetings array in response');
+                }
+            } catch (error) {
+                box.className = 'test-box error';
+                result.innerHTML = `
+                    <p>❌ <strong>MongoDB connection issue!</strong></p>
+                    <p>Error: ${error.message}</p>
+                    <p><strong>Fix:</strong> Make sure MongoDB is running:</p>
+                    <pre>net start MongoDB
+# OR
+mongod --dbpath "C:\\data\\db"</pre>
+                `;
+            }
+        }
+
+        async function testAPI() {
+            const box = document.getElementById('apiTest');
+            const result = document.getElementById('apiResult');
+            result.innerHTML = '<p>⏳ Testing...</p>';
+            
+            try {
+                const response = await fetch('http://localhost:3000/api/get-meetings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ meetups: 'all' })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    box.className = 'test-box success';
+                    result.innerHTML = `
+                        <p>✅ <strong>Next.js API routes working!</strong></p>
+                        <p>Retrieved ${data.meetings ? data.meetings.length : 0} meetups</p>
+                        <p><strong>All systems operational! 🎉</strong></p>
+                    `;
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                box.className = 'test-box error';
+                result.innerHTML = `
+                    <p>❌ <strong>Next.js API not working!</strong></p>
+                    <p>Error: ${error.message}</p>
+                    <p><strong>Fix:</strong> Make sure Next.js is running:</p>
+                    <pre>cd next/fullStackWeek11lab2
+npm run dev</pre>
+                `;
+            }
+        }
+
+        // Auto-run tests on page load
+        setTimeout(() => {
+            testBackend();
+            setTimeout(() => testMongo(), 1000);
+            setTimeout(() => testAPI(), 2000);
+        }, 500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+.calendarSection {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendarSection h2 {
+    margin: 0 0 1.5rem 0;
+    color: #333;
+}
+
+.calendarButtons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.calendarButton {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    background: white;
+    transition: all 0.2s;
+}
+
+.calendarButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.calendarButton:active {
+    transform: translateY(0);
+}
+
+.calendarButton svg {
+    width: 20px;
+    height: 20px;
+}
+
+.google {
+    border-color: #4285f4;
+    color: #4285f4;
+}
+
+.google:hover {
+    background: #4285f4;
+    color: white;
+}
+
+.outlook {
+    border-color: #0078d4;
+    color: #0078d4;
+}
+
+.outlook:hover {
+    background: #0078d4;
+    color: white;
+}
+
+.ical {
+    border-color: #77002e;
+    color: #77002e;
+}
+
+.ical:hover {
+    background: #77002e;
+    color: white;
+}
+
+.eventInfo {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 6px;
+    border-left: 4px solid #77002e;
+    margin: 0;
+    color: #555;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .calendarButtons {
+        flex-direction: column;
+    }
+
+    .calendarButton {
+        width: 100%;
+        justify-content: center;
+    }
+}
