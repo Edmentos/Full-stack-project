@@ -29,6 +29,22 @@ function MeetupItem(props) {
     meetupCtx.toggleFavorite(props.id);
   }
 
+  // Format date and time for display
+  function formatDateTime() {
+    if (!props.date) return null;
+    
+    const dateObj = new Date(props.date);
+    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+    const formattedDate = dateObj.toLocaleDateString('en-US', options);
+    
+    return (
+      <div className={classes.datetime}>
+        📅 {formattedDate}
+        {props.time && ` • 🕒 ${props.time}`}
+      </div>
+    );
+  }
+
   return (
     <li className={classes.item}>
       <Card>
@@ -45,6 +61,7 @@ function MeetupItem(props) {
         <div className={classes.content}>
           <h3>{props.title}</h3>
           <address>{props.address}</address>
+          {formatDateTime()}
         </div>
         <div className={classes.actions}>
           <button onClick={showDetailsHandler} className={classes.detailsButton}>

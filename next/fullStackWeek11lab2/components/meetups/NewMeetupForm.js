@@ -8,6 +8,8 @@ function NewMeetupForm(props) {
   const imageInputRef = useRef();
   const addressInputRef = useRef();
   const descriptionInputRef = useRef();
+  const dateInputRef = useRef();
+  const timeInputRef = useRef();
 
   function submitHandler(event) {
     event.preventDefault();
@@ -16,6 +18,8 @@ function NewMeetupForm(props) {
     const enteredImage = imageInputRef.current.value;
     const enteredAddress = addressInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
+    const enteredDate = dateInputRef.current.value;
+    const enteredTime = timeInputRef.current.value;
 
     const meetupData = {
       meetingId: enteredTitle,
@@ -23,6 +27,8 @@ function NewMeetupForm(props) {
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
+      date: enteredDate,
+      time: enteredTime,
     };
 
     props.onAddMeetup(meetupData);
@@ -59,6 +65,26 @@ function NewMeetupForm(props) {
             required 
             id='address' 
             ref={addressInputRef}
+            disabled={props.isSubmitting}
+          />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor='date'>Date</label>
+          <input 
+            type='date' 
+            required 
+            id='date' 
+            ref={dateInputRef}
+            disabled={props.isSubmitting}
+          />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor='time'>Time</label>
+          <input 
+            type='time' 
+            required 
+            id='time' 
+            ref={timeInputRef}
             disabled={props.isSubmitting}
           />
         </div>

@@ -45,10 +45,11 @@ function HomePage() {
                     <h3>{stats.uniqueAddresses}</h3>
                     <p>Locations</p>
                 </div>
-                {stats.mostPopularAddress && (
+                {stats.mostPopularMeetup && (
                     <div className={classes.statCard}>
-                        <h3>{stats.mostPopularAddress.count}</h3>
-                        <p>Most Popular: {stats.mostPopularAddress.address}</p>
+                        <h3>⭐ {stats.mostPopularMeetup.avgRating.toFixed(1)}</h3>
+                        <p>Most Popular: {stats.mostPopularMeetup.title}</p>
+                        <small>({stats.mostPopularMeetup.ratingCount} ratings)</small>
                     </div>
                 )}
             </div>

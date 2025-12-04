@@ -1,12 +1,17 @@
 import classes from './CalendarExport.module.css'
 
 function CalendarExport({ meetup }) {
-    // Format date for calendar (default to 7 days from now if no date)
+    // Format date for calendar using meetup's date and time
     function getEventDate() {
-        if (meetup.eventDate) {
-            return new Date(meetup.eventDate)
+        if (meetup.date) {
+            // Combine date and time if available
+            const dateStr = meetup.time 
+                ? `${meetup.date}T${meetup.time}`
+                : `${meetup.date}T18:00:00`
+            return new Date(dateStr)
         }
-        // Default to 7 days from now
+        
+        // Fallback: Default to 7 days from now if no date
         const futureDate = new Date()
         futureDate.setDate(futureDate.getDate() + 7)
         futureDate.setHours(18, 0, 0, 0) // 6 PM

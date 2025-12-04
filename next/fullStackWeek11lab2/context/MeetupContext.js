@@ -328,18 +328,30 @@ export function MeetupContextProvider(props) {
             return acc
         }, {})
 
-        // Find most popular address
-        const mostPopularAddress = Object.entries(addressCounts)
-            .sort((a, b) => b[1] - a[1])[0]
+        // Find most popular meetup based on average rating
+        let mostPopularMeetup = null
+        let highestAvgRating = 0
+        
+        meetings.forEach(meetup => {
+            if (meetup.ratings && meetup.ratings.length > 0) {
+                const avgRating = meetup.ratings.reduce((sum, r) => sum + r.rating, 0) / meetup.ratings.length
+                if (avgRating > highestAvgRating) {
+                    highestAvgRating = avgRating
+                    mostPopularMeetup = {
+                        id: meetup.meetingId,
+                        title: meetup.title,
+                        avgRating: avgRating,
+                        ratingCount: meetup.ratings.length
+                    }
+                }
+            }
+        })
 
         return {
             totalMeetups: meetings.length,
             totalFavorites: globals.favorites.length,
             uniqueAddresses: Object.keys(addressCounts).length,
-            mostPopularAddress: mostPopularAddress ? {
-                address: mostPopularAddress[0],
-                count: mostPopularAddress[1]
-            } : null
+            mostPopularMeetup: mostPopularMeetup
         }
     }
 

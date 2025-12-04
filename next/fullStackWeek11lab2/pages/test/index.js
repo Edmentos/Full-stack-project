@@ -9,23 +9,7 @@ import classes from '../../styles/Home.module.css'
  */
 export default function TestPage() {
     const meetupCtx = useContext(MeetupContext)
-    const [backendStatus, setBackendStatus] = useState(null)
     const [apiTest, setApiTest] = useState(null)
-
-    async function testBackendDirect() {
-        setBackendStatus('Testing...')
-        try {
-            const response = await fetch('http://localhost:8000/readMeeting', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ cmd: 'all' })
-            })
-            const data = await response.json()
-            setBackendStatus(`✅ Backend Connected! Found ${data.meetings?.length || 0} meetups`)
-        } catch (error) {
-            setBackendStatus(`❌ Backend Error: ${error.message}`)
-        }
-    }
 
     async function testAPIRoute() {
         setApiTest('Testing...')
@@ -111,35 +95,6 @@ export default function TestPage() {
                 
                 <div style={{ marginTop: '1rem' }}>
                     <button 
-                        onClick={testBackendDirect}
-                        style={{
-                            padding: '0.75rem 1.5rem',
-                            background: '#667eea',
-                            color: 'white',
-                            border: 'none',
-                            borderRadius: '6px',
-                            cursor: 'pointer',
-                            fontSize: '1rem',
-                            marginRight: '1rem'
-                        }}
-                    >
-                        Test Backend Direct (Port 8000)
-                    </button>
-                    {backendStatus && (
-                        <div style={{ 
-                            marginTop: '1rem', 
-                            padding: '1rem', 
-                            background: backendStatus.includes('✅') ? '#f0fff4' : '#fff5f5',
-                            border: backendStatus.includes('✅') ? '2px solid #48bb78' : '2px solid #e53e3e',
-                            borderRadius: '6px'
-                        }}>
-                            {backendStatus}
-                        </div>
-                    )}
-                </div>
-
-                <div style={{ marginTop: '2rem' }}>
-                    <button 
                         onClick={testAPIRoute}
                         style={{
                             padding: '0.75rem 1.5rem',
@@ -152,7 +107,7 @@ export default function TestPage() {
                             marginRight: '1rem'
                         }}
                     >
-                        Test Next.js API Route
+                        Test API Connection
                     </button>
                     {apiTest && (
                         <div style={{ 
@@ -165,6 +120,10 @@ export default function TestPage() {
                             {apiTest}
                         </div>
                     )}
+                    <p style={{ marginTop: '1rem', color: '#666', fontSize: '0.9rem' }}>
+                        ℹ️ This tests the Next.js API routes which connect to the backend server (port 8000). 
+                        If this works, everything is properly connected!
+                    </p>
                 </div>
             </div>
 
@@ -226,12 +185,12 @@ export default function TestPage() {
             </div>
 
             <div style={{ marginTop: '2rem', padding: '1rem', background: '#ebf8ff', borderRadius: '6px' }}>
-                <h3>💡 Troubleshooting Tips</h3>
+                <h3>💡 System Architecture</h3>
                 <ul>
-                    <li>If backend test fails: Make sure <code>npm start</code> is running in node/microservices folder</li>
-                    <li>If API test fails: Make sure <code>npm run dev</code> is running in next/fullStackWeek11lab2 folder</li>
-                    <li>Both servers must be running for the app to work!</li>
-                    <li>Check the connection status indicator at the bottom-left of every page</li>
+                    <li><strong>Next.js Frontend (Port 3000):</strong> The user interface you're viewing</li>
+                    <li><strong>Next.js API Routes:</strong> Server-side endpoints that handle requests</li>
+                    <li><strong>Node.js Backend (Port 8000):</strong> Microservices that connect to MongoDB</li>
+                    <li><strong>MongoDB (Port 27017):</strong> Database storing all meetup data</li>
                 </ul>
             </div>
         </div>

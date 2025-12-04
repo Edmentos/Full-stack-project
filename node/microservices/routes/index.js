@@ -13,6 +13,8 @@ let meetingSchema = new Schema({
   image: String,
   address: String,
   description: String,
+  date: String,  // Meetup date (YYYY-MM-DD format)
+  time: String,  // Meetup time (HH:MM format)
   ratings: [{
     userId: String,
     rating: Number,
