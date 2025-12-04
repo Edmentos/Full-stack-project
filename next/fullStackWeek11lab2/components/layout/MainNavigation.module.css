@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color:  #1a2920;
+  background-color: #4A4A4A;
   padding: 0 10%;
   color: white;
   gap: 2rem;
@@ -44,7 +44,7 @@
 
 .searchInput:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #89CFF0;
 }
 
 .searchInput::placeholder {
@@ -53,7 +53,7 @@
 
 .searchButton {
   padding: 0.5rem 1rem;
-  background-color: #667eea;
+  background-color: #89CFF0;
   color: white;
   border: none;
   border-radius: 6px;
@@ -63,7 +63,7 @@
 }
 
 .searchButton:hover {
-  background-color: #5568d3;
+  background-color: #6FB1D0;
 }
 
 .clearButton {
@@ -111,7 +111,7 @@
 
 /* Badge for counts */
 .badge {
-  background-color: #667eea;
+  background-color: #89CFF0;
   color: white;
   border-radius: 12px;
   padding: 0.2rem 0.6rem;

@@ -1,6 +1,5 @@
 import MainNavigation from './MainNavigation';
 import Notification from '../ui/Notification';
-import ConnectionStatus from '../ui/ConnectionStatus';
 import classes from './Layout.module.css';
 
 function Layout(props) {
@@ -9,7 +8,6 @@ function Layout(props) {
       <MainNavigation />
       <main className={classes.main}>{props.children}</main>
       <Notification />
-      <ConnectionStatus />
     </div>
   );
 }
